@@ -88,13 +88,35 @@ rutas_puntos <- list.files("entregas",
 rutas_puntos
 
 #Expresión regular para buscar todos los ficheros con el justificante del curso
-rutas_justificantes <- list.files("entregas_descomprimidas", 
+rutas_justificantes <- list.files("entregas", 
                                   pattern = "certificate.*\\.(pdf|png|jpg|jpeg)$", 
                                   recursive = TRUE, 
                                   full.names = TRUE, 
                                   ignore.case = TRUE)
 rutas_justificantes
 
+
+#Creación de las variables del dataframe  
+for (i in seq_along(rutas_puntos)) {
+  
+  ruta <- rutas_puntos[i]
+  partes_ruta <- str_split(ruta, "/")[[1]]
+  carpeta_alumno <- partes_ruta[2] 
+  
+  apellidos_nombre <- str_split(carpeta_alumno, "_")[[1]][1]
+  apellidos <- str_split(apellidos_nombre, ",")[[1]][1]
+  
+  contenido <- readLines(ruta, warn = FALSE)[1]
+  
+  # Extraigo solo los dígitos del texto usando str_extract de stringr
+  # "\\d+" significa "uno o más números"
+  puntos_num <- as.numeric(str_extract(contenido, "\\d+"))
+  
+  # Extraigo el nombre exacto del fichero
+  nombre_fichero <- basename(ruta)
+  
+  
+}
 
 ```
 
