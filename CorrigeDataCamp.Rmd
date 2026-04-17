@@ -52,10 +52,13 @@ language:
 ---
 
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
-
-
 # CONFIGURACIÓN GENERAL
+library(dplyr)      
+library(stringr)  
+library(readxl)     
+library(openxlsx)   
 library(knitr)
+
 options(width = 100)
 
 # Opciones generales de los chucks. Se utilizarán salvo cambios en el chunk
@@ -73,3 +76,23 @@ knit_hooks$set(inline = function(x) {
 })
 #knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
+
+
+```{r}
+#Expresión regular para buscar todos los ficheros de puntuaciones en la carpeta descomprimida 
+rutas_puntos <- list.files("entregas", 
+                           pattern = "puntos.*\\.txt$", 
+                           recursive = TRUE, 
+                           full.names = TRUE, 
+                           ignore.case = TRUE)
+rutas_puntos
+
+
+```
+
+
+
+
+
+
+
