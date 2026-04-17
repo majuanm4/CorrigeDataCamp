@@ -156,7 +156,10 @@ alumnos_matriculados <- read_excel("AlumnosTD25_26.xlsx")
 
 #Combino dataframes
 AlumnosNotas <- alumnos_matriculados %>%
-  left_join(evalua_df, by = "Apellido(s)") 
+  left_join(evalua_df, by = c("Apellido(s)" = "apellidos"))
+
+#Guardo segundo excel
+write.xlsx(AlumnosNotas, "AlumnosNotas.xlsx")
 ```
 
 
