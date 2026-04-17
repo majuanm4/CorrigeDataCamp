@@ -87,6 +87,14 @@ rutas_puntos <- list.files("entregas",
                            ignore.case = TRUE)
 rutas_puntos
 
+#Expresión regular para buscar todos los ficheros con el justificante del curso
+rutas_justificantes <- list.files("entregas_descomprimidas", 
+                                  pattern = "certificate.*\\.(pdf|png|jpg|jpeg)$", 
+                                  recursive = TRUE, 
+                                  full.names = TRUE, 
+                                  ignore.case = TRUE)
+rutas_justificantes
+
 
 ```
 
